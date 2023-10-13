@@ -15,30 +15,28 @@ const gameSchema = new mongoose.Schema({
   },
   description: {
     type: String,
-    required: [true, 'Description is required!'],
+    required: [true, 'Descriptions is required!'],
   },
   genre: {
     type: String,
-    required: [true, 'Genre is required!'],
+    required: [true, 'Genre is required']
   },
   platform: {
     type: String,
     enum: {
       values: ['PC', 'Nintendo', 'PS4', 'PS5', 'XBOX'],
-      message: 'Please chose one of the following platforms: PC, Nintendo, PS4, PS5, XBOX'
+      message: 'Please enter valid platform!'
     },
-    required: [true, 'Platform is required!']
   },
   boughtBy: [{
     type: mongoose.Types.ObjectId,
     ref: 'User'
   }],
   owner: {
-    type: mongoose.Types.ObjectId,
-    ref: 'User'
+    type: mongoose.Types.ObjectId
   }
 });
 
-const Game = mongoose.model('Game', gameSchema);
+const Game = mongoose.model('Game', gameSchema)
 
-module.exports = Game;
+module.exports = Game

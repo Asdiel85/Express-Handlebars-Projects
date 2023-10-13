@@ -12,10 +12,6 @@ const animalSchema = new mongoose.Schema(
       required: [true, 'Years are required!'],
       min: [1, 'Years should be minimum 1!'],
       max: [100, 'Years should be maximum 100!'],
-      validate: {
-        validator: Number.isInteger,
-        message: `{VALUE} is not a number!`
-      }
     },
     kind: {
       type: String,
@@ -60,6 +56,12 @@ const animalSchema = new mongoose.Schema(
     timestamps: true,
   }
 );
+
+animalSchema.path('years').validate(function(value) {
+  if(isNaN(value)) {
+    throw new Error ('Please enter a valid number!')
+  }
+});
 
 const Animal = mongoose.model('Animal', animalSchema);
 
