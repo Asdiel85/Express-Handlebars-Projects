@@ -1,7 +1,7 @@
 const router = require('express').Router();
 
 const homeController = require('./controllers/homeController')
-const usersController = require('./controllers/usersController')
+const usersController = require('./controllers/usersController.js')
 const gamesController = require('./controllers/gamesController')
 
 router.use(homeController);
